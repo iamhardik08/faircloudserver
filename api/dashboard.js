@@ -3,6 +3,14 @@ import jwt from "jsonwebtoken";
 const SECRET_KEY = "your_secret_key";
 
 export default function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', 'https://faircloudclient-at772dopx-hardik-trivedis-projects-038e8892.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
   if (req.method === "GET") {
     const authHeader = req.headers.authorization;
 
